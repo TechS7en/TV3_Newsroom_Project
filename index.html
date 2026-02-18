@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV3 Ghana - First in News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.2.4",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "react/": "https://esm.sh/react@^19.2.4/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo-area">
+                <img src="images/logo.png" alt="TV3 Logo" class="logo-img" id="main-logo" onerror="this.style.display='none'; document.getElementById('logo-fallback').style.display='flex';">
+                <div id="logo-fallback" class="logo-box" style="display: none;">3</div>
+                <h1 style="font-size: 24px; margin: 0;">TV3 NEWSROOM</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="news.html">LATEST</a></li>
+                    <li><a href="category.html">CATEGORIES</a></li>
+                    <li><a href="live.html">LIVE TV</a></li>
+                    <li><a href="contact.html">SEND A TIP</a></li>
+                    <li><a href="admin.html">ADMIN</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="ticker-wrap">
+        <div class="ticker-label">BREAKING</div>
+        <div id="ticker-text">Loading headlines...</div>
+    </div>
+
+    <main class="container">
+        <!-- Featured Story & Trending Section -->
+        <section style="margin-top: 30px; display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+            <!-- Dynamic Featured Hero Banner -->
+            <div id="featured-story-hero">
+                <!-- This image comes from the first item in js/main.js -->
+            </div>
+
+            <aside class="trending-sidebar">
+                <h2 style="margin-bottom: 20px; border-bottom: 2px solid var(--tv3-red); padding-bottom: 10px;">TRENDING NOW</h2>
+                <div id="trending-list">
+                    <div class="trending-item" onclick="window.goToSingle(2)" style="cursor:pointer">
+                        <span class="trend-number">1</span>
+                        <p>Ghana Cedi Stabilizes Against Major Global Currencies</p>
+                    </div>
+                    <div class="trending-item" onclick="window.goToSingle(3)" style="cursor:pointer">
+                        <span class="trend-number">2</span>
+                        <p>Black Stars Gear Up for Crucial AFCON Qualifier</p>
+                    </div>
+                    <div class="trending-item" onclick="window.goToSingle(4)" style="cursor:pointer">
+                        <span class="trend-number">3</span>
+                        <p>Sarkodie Announces New Album Release Date</p>
+                    </div>
+                    <div class="trending-item" onclick="window.goToSingle(5)" style="cursor:pointer">
+                        <span class="trend-number">4</span>
+                        <p>New Tech Hub to Open in Kumasi</p>
+                    </div>
+                    <div class="trending-item" onclick="window.goToSingle(6)" style="cursor:pointer">
+                        <span class="trend-number">5</span>
+                        <p>Oil & Gas: New Discovery Off the Coast</p>
+                    </div>
+                </div>
+            </aside>
+        </section>
+
+        <!-- Latest News Grid -->
+        <h2 style="margin-top: 50px; font-size: 30px;">LATEST STORIES</h2>
+        <div id="latest-grid" class="news-grid"></div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="margin-bottom: 20px;">TV3 GHANA</h3>
+                    <p style="color: #aaa; font-size: 14px;">Broadcasting since 1997. The leading provider of credible news and high-quality entertainment in Ghana.</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px;">CATEGORIES</h3>
+                    <ul style="list-style: none; font-size: 14px; line-height: 2;">
+                        <li>Politics</li>
+                        <li>Business</li>
+                        <li>Sports</li>
+                        <li>Entertainment</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 20px;">FOLLOW US</h3>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="X (Twitter)"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #666; font-size: 12px; margin-top: 40px;">&copy; 2024 TV3 Ghana Newsroom Project Prototype</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script>
+        window.onload = function() {
+            if (window.renderNewsGrid && window.NEWS_DATA) {
+                // Render the main news grid
+                window.renderNewsGrid(window.NEWS_DATA, 'latest-grid');
+                // Render the hero banner (the featured story)
+                window.renderHero('featured-story-hero');
+            }
+        };
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
