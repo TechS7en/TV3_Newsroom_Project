@@ -1,80 +1,293 @@
-# TV3 Ghana Newsroom Prototype
+TV3 Ghana Newsroom Web App Prototype
+Overview
 
-A modern, interactive frontend prototype for the TV3 Ghana Newsroom. This project delivers a high-fidelity user interface for a national news outlet, featuring real-time data simulation via `localStorage`, dynamic content filtering, and a comprehensive admin dashboard.
+A modern, interactive news website prototype for TV3 Ghana, featuring a responsive design with real-time updates, category-based news filtering, live TV simulation, and an admin dashboard. This frontend-only prototype demonstrates key functionality for a professional news platform.
+Features
+Homepage (index.html)
 
-## Project Overview
+    TV3-branded header with logo and navigation
 
-This prototype was developed to demonstrate a modern news-reading experience for TV3 Ghana. It focuses on clean typography, brand-consistent aesthetics (TV3 Red & Gold), and seamless navigation between categories, live broadcasts, and breaking updates.
+    Auto-scrolling breaking news ticker (rotates every 3 seconds)
 
-## Key Features
+    Featured story section with prominent display
 
-### News & Content
-- **Dynamic Homepage:** Features a high-impact "Hero" section for featured stories and a robust grid for the latest news.
-- **Breaking News Ticker:** A JavaScript-powered auto-scrolling ticker that cycles through the latest headlines every 3 seconds.
-- **Trending Sidebar:** Real-time tracking of popular stories based on user click data.
-- **Category Filtering:** Dynamic filtering system (Politics, Business, Sports, Entertainment, Technology) with real-time title and metadata updates.
-- **Deep-Linking:** Using `localStorage` to pass story data between the grid and the single-article view without a backend.
+    Latest news grid with 8+ news cards
 
-### Multimedia & Interactivity
-- **Live TV Page:** Embedded YouTube live stream simulation with a dynamic "Now Playing" schedule that tracks the user's system time.
-- **News Tip System:** A validated contact form allowing citizens to submit news tips and upload media (simulated).
-- **Reader Engagement:** Functional comment section on every article with persistence via local storage.
+    Trending sidebar with top 5 headlines
 
-### Admin Dashboard
-- **Analytics:** Tracks and displays click counts for every article.
-- **Content Management:** View, manage, and delete reader comments and news tips.
-- **Data Control:** "Clear All" functionality to reset the prototype state.
+    Social media integration in footer
 
-## Technical Stack
+Category Page (category.html)
 
-- **Markup:** HTML5
-- **Styling:** CSS3 (Flexbox, CSS Grid, Custom Variables for easy branding/logo scaling)
-- **Logic:** Vanilla JavaScript (ES6+)
-- **Icons:** Font Awesome 6.4.0
-- **Typography:** Bebas Neue (Headings) & Inter (Body)
-- **Persistence:** Web Storage API (`localStorage`)
+    Dynamic category filtering (Politics, Business, Sports, Entertainment, Technology)
 
-## Project Structure
+    Dropdown filter with real-time updates
 
-```text
+    Dynamic page title updates (e.g., "Sports News")
+
+    Responsive grid layout
+
+Single News Page (single.html)
+
+    Complete story view with headline, author, date, and full content
+
+    Related stories section (3 stories)
+
+    Interactive comment system
+
+    LocalStorage integration for content persistence
+
+    Story click tracking
+
+Live TV Page (live.html)
+
+    YouTube live stream placeholder
+
+    Program schedule table
+
+    "Now Playing" indicator highlighting current shows based on system time
+
+    Real-time updates every minute
+
+Contact/News Tip Page (contact.html)
+
+    Comprehensive tip submission form
+
+    Inline form validation with error messages
+
+    Category selection dropdown
+
+    File upload simulation
+
+    LocalStorage storage for submitted tips
+
+Admin Dashboard (admin.html)
+
+    View all submitted tips
+
+    Manage comments
+
+    Track story click statistics
+
+    Delete individual items
+
+    "Clear All" functionality
+
+    LocalStorage data management
+
+Technologies Used
+
+    HTML5 - Semantic markup structure
+
+    CSS3 - Modern styling with flexbox and grid
+
+    JavaScript (ES6+) - Dynamic functionality and localStorage management
+
+    Font Awesome 6 - Social media icons and UI elements
+
+    LocalStorage API - Client-side data persistence
+
+Project Structure
 TV3_Newsroom_Project/
-├── index.html          # Homepage (Featured, Latest, Trending)
-├── news.html           # Full Latest News Archive
-├── category.html       # Dynamic News Filtering
-├── single.html         # Individual Article View & Comments
-├── live.html           # Live Stream & Schedule
-├── contact.html        # News Tip Submission Form
-├── admin.html          # Admin Management Dashboard
+│
+├── index.html              # Homepage
+├── news.html               # News listing page
+├── category.html           # Category filtering page
+├── single.html             # Individual news story
+├── live.html               # Live TV streaming page
+├── contact.html            # News tip submission
+├── admin.html              # Admin dashboard
+│
 ├── css/
-│   └── style.css       # Core UI Styles & Branding Variables
+│   └── style.css          # Main stylesheet
+│
 ├── js/
-│   └── main.js        # Core Logic, News Data, & Ticker System
-└── images/             # Brand Assets (Logo, Banners, Thumbnails)
-```
+│   └── main.js            # Core JavaScript functionality
+│
+└── images/                 # Image assets (create this folder)
+    ├── logo.png           # TV3 Ghana logo
+    ├── favicon.ico        # Website icon
+    └── [news images]      # Story thumbnails
+Key Functionality
+Breaking News Ticker
 
-## Setup & Customization
+    Automatically cycles through headlines every 3 seconds
 
-### Installation
-No build step is required. Simply clone the repository and open `index.html` in any modern web browser.
+    Eye-catching red background with white text
 
-### Adjusting Logo Size
-The project uses CSS variables for global scaling. To change the logo size across the entire site:
-1. Open `css/style.css`
-2. Locate the `:root` section.
-3. Modify the `--logo-height` variable:
-   ```css
-   :root {
-       --logo-height: 60px; /* Change this value to resize the logo */
-   }
-   ```
+    Smooth transitions
 
-### Updating News Content
-All news articles are managed via the `NEWS_DATA` array in `js/main.js`. Updating an object in this array will automatically update the Homepage, Category pages, and Ticker.
+Category Filtering
 
-## Usage Notes
+    Dropdown selection updates visible stories
 
-- **Persistence:** Because this is a frontend-only prototype, all "submitted" data (tips, comments, clicks) is saved to your browser's `localStorage`. Clearing your browser cache or using the "Clear All" button in the Admin panel will reset the data.
-- **Browser Support:** Optimized for the latest versions of Chrome, Firefox, Safari, and Edge.
+    Dynamic page title reflects current category
 
-## Credits
-Developed for the TV3 Ghana Newsroom Frontend Prototype Project.
+    Smooth filtering without page reload
+
+Comment System
+
+    Users can post comments on stories
+
+    Comments stored in localStorage
+
+    Real-time display updates
+
+    Admin can moderate comments
+
+Live TV Schedule
+
+    Current program highlighted in gold
+
+    Updates based on user's system time
+
+    Schedule table with program times and hosts
+
+Form Validation
+
+    Real-time inline error messages
+
+    Email format validation
+
+    Required field checking
+
+    No alert popups - clean user experience
+
+Admin Features
+
+    Centralized data management
+
+    Delete individual tips/comments
+
+    Bulk data clearing
+
+    Click statistics tracking
+
+Design Features
+
+    Responsive Design - Works on mobile, tablet, and desktop
+
+    TV3 Branding - Blue and gold color scheme
+
+    Modern UI - Card-based layout with hover effects
+
+    Accessibility - Semantic HTML, proper contrast ratios
+
+    User Experience - Intuitive navigation, clear visual hierarchy
+
+Data Management
+
+All data is stored locally in the browser's localStorage:
+
+    News tips - Contact form submissions
+
+    Comments - User comments on stories
+
+    Story clicks - Tracking popular content
+
+    Persistent storage - Data survives page refreshes
+
+Browser Support
+
+    Chrome (latest)
+
+    Firefox (latest)
+
+    Safari (latest)
+
+    Edge (latest)
+
+    Opera (latest)
+
+Responsive Breakpoints
+
+    Mobile: 320px - 768px
+
+    Tablet: 768px - 1024px
+
+    Desktop: 1024px+
+
+Usage Examples
+Submitting a News Tip
+
+    Navigate to Contact page
+
+    Fill in all required fields
+
+    Select tip category
+
+    Add message and optional attachment
+
+    Submit - data saves to localStorage
+
+Filtering News by Category
+
+    Go to Category page
+
+    Use dropdown to select category
+
+    Page updates to show relevant stories
+
+    Title changes dynamically
+
+Watching Live TV
+
+    Visit Live TV page
+
+    View embedded YouTube stream
+
+    Check schedule for upcoming shows
+
+    Current show automatically highlighted
+
+Target Users
+
+    General Public - News consumption
+
+    Journalists - Story submission
+
+    News Editors - Content management
+
+    Administrators - Data oversight
+
+Potential Enhancements
+
+    Backend API integration
+
+    User authentication system
+
+    Real-time comment updates
+
+    Push notifications
+
+    Social media sharing
+
+    Advanced search functionality
+
+    Video on-demand library
+
+    Weather updates integration
+
+License
+
+© 2026 Accra Technical University. All rights reserved. This is a prototype for demonstration purposes.
+Contributing
+
+This is a prototype project. For suggestions or improvements, please contact the ATU B-tech CS (level 200) development team.
+Contact:
+
+    Email: nicholassowahjr@gmail.com
+
+    Phone: +233 599 454 898
+
+    Address: TV3 Ghana, Accra, Ghana
+
+Acknowledgments
+
+    TV3 Ghana for the inspiration
+
+    Font Awesome for icons
+
+    YouTube for embed functionality
+
+Built for ATU
