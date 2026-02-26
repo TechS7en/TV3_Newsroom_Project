@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV3 Ghana - News Story</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                TV3 Ghana
+                <span>First in News</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="category.html">News</a></li>
+                    <li><a href="live.html">Live TV</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <article>
+            <h1 id="storyTitle"></h1>
+            <div class="news-meta">
+                <span id="storyAuthor"></span> • <span id="storyDate"></span>
+            </div>
+            <img id="storyImage" src="" alt="" style="width: 100%; max-height: 500px; object-fit: cover; margin: 1rem 0;">
+            <div id="storyContent"></div>
+        </article>
+
+        <section class="comments-section">
+            <h3>Comments</h3>
+            <div id="commentsList"></div>
+            
+            <form id="commentForm">
+                <div class="form-group">
+                    <label for="commentName">Your Name</label>
+                    <input type="text" id="commentName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="commentContent">Your Comment</label>
+                    <textarea id="commentContent" class="form-control" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="btn">Post Comment</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Related Stories</h2>
+            <div class="news-grid" id="relatedStories"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>About TV3 Ghana</h3>
+                    <p>Ghana's most trusted news source, delivering accurate and timely news since 1997.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 TV3 Ghana. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
