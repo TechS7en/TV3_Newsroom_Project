@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV3 Ghana - News</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* News Page Specific Styles */
+        .news-page-header {
+            background: linear-gradient(135deg, #001f3f 0%, #003366 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .news-page-header h1 {
+            font-size: 2rem;
+            color: #ffd700;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-page-header p {
+            color: #ccc;
+            font-size: 1rem;
+        }
+
+        .filter-bar {
+            background: white;
+            padding: 1.2rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-bar label {
+            font-weight: 600;
+            color: #001f3f;
+            font-size: 1rem;
+        }
+
+        .filter-bar select {
+            padding: 0.6rem 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: #333;
+            cursor: pointer;
+            background: #f9f9f9;
+            transition: border-color 0.3s;
+        }
+
+        .filter-bar select:focus {
+            outline: none;
+            border-color: #ffd700;
+        }
+
+        .results-count {
+            margin-left: auto;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .results-count span {
+            font-weight: bold;
+            color: #003366;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+            display: none;
+        }
+
+        .no-results i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            color: #001f3f;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #ffd700;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="TV3 Ghana Logo" class="logo-image" width="70px" height="50px">
+                <span>First in News</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="live.html">Live TV</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="admin.html">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- BREAKING NEWS TICKER -->
+    <div class="breaking-news">
+        <div class="container ticker-container">
+            <span class="ticker-label">BREAKING</span>
+            <span class="ticker-content"></span>
+        </div>
+    </div>
+
+    <!-- NEWS PAGE HERO -->
+    <div class="news-page-header">
+        <div class="container">
+            <h1><i class="fas fa-newspaper"></i> Latest News</h1>
+            <p>Stay informed with the latest stories from Ghana and beyond</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- FILTER BAR -->
+        <div class="filter-bar">
+            <label for="categoryFilter"><i class="fas fa-filter"></i> Filter by Category:</label>
+            <select id="categoryFilter" onchange="filterNews()">
+                <option value="all">All Categories</option>
+                <option value="Politics">Politics</option>
+                <option value="Business">Business</option>
+                <option value="Sports">Sports</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Technology">Technology</option>
+            </select>
+            <div class="results-count">Showing <span id="resultCount">8</span> articles</div>
+        </div>
+
+        <!-- DYNAMIC PAGE TITLE -->
+        <h2 class="category-title" id="categoryTitle">All News</h2>
+
+        <!-- NEWS GRID -->
+        <div class="news-grid" id="newsGrid">
+
+            <div class="news-card" data-category="Politics" data-id="1">
+                <img src="images/news1.png" alt="News">
+                <div class="news-card-content">
+                    <span class="news-category">Politics</span>
+                    <h3>African economies should prioritize gold reserves over dollar assets – Dr. Frank Bannor</h3>
+                    <div class="news-meta">By Publishing Desk &nbsp;|&nbsp; Feb 20, 2025</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="Sports" data-id="2">
+                <img src="images/news2.png" alt="News">
+                <div class="news-card-content">
+                    <span class="news-category">Sports</span>
+                    <h3>Prosper Nartey Ogum pens two-year contract as Black Starlets head coach</h3>
+                    <div class="news-meta">By Rabbi Adu Agyei &nbsp;|&nbsp; Feb 19, 2025</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="Politics" data-id="3">
+                <img src="images/new3.png" alt="News">
+                <div class="news-card-content">
+                    <span class="news-category">Politics</span>
+                    <h3>Minority demands immediate briefing in Parliament over killing of Ghanaians in Burkina Faso</h3>
+                    <div class="news-meta">By Raphael Ghartey &nbsp;|&nbsp; Feb 18, 2025</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="Technology" data-id="4">
+                <img src="images/news4.png" alt="News">
+                <div class="news-card-content">
+                    <span class="news-category">Technology</span>
+                    <h3>President Mahama applauds China for $30m to construct new Science and Technology University in Damongo</h3>
+                    <div class="news-meta">By Komla Klutsey &nbsp;|&nbsp; Feb 17, 2025</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="Entertainment" data-id="5">
+                <img src="images/news5.png" alt="News">
+                <div class="news-card-content">
+                    <span class="news-category">Entertainment</span>
+                    <h3>Media General launches 'Ghana Month' to celebrate independence and cultural heritage</h3>
+                    <div class="news-meta">By Malise Kofi Omoloye &nbsp;|&nbsp; Feb 16, 2025</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="Business" data-id="6">
+                <img src="images/news6.png" alt="News">
+                <div class="news-card-content">
+                    <span class="news-category">Business</span>
+                    <h3>The quality of Ghana's cocoa has long been the envy of many countries – Dep Finance Minister</h3>
+                    <div class="news-meta">By Laud Nartey &nbsp;|&nbsp; Feb 15, 2025</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="Business" data-id="7">
+                <img src="images/news7.png" alt="News">
+                <div class="news-card-content">
+                    <span class="news-category">Business</span>
+                    <h3>Ghana could earn GHC47.9b annually by 2032 through investment in waste management – ISSER</h3>
+                    <div class="news-meta">By Publishing Desk &nbsp;|&nbsp; Feb 14, 2025</div>
+                </div>
+            </div>
+
+            <div class="news-card" data-category="Entertainment" data-id="8">
+                <img src="images/news8.png" alt="News">
+                <div class="news-card-content">
+                    <span class="news-category">Entertainment</span>
+                    <h3>IShowSpeed to receive Ghanaian Passport following confirmation of ties – Ablakwa</h3>
+                    <div class="news-meta">By Lois Dogbe &nbsp;|&nbsp; Feb 13, 2025</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- NO RESULTS MESSAGE -->
+        <div class="no-results" id="noResults">
+            <i class="fas fa-search"></i>
+            <h3>No articles found</h3>
+            <p>There are no stories in this category yet. Try selecting a different category.</p>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3>About TV3 Ghana</h3>
+                    <p>Ghana's most trusted news source, delivering accurate and timely news since 1997.</p>
+                </div>
+                <div>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Advertise</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 TV3 Ghana. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Filter news by category
+        function filterNews() {
+            const selected = document.getElementById('categoryFilter').value;
+            const cards = document.querySelectorAll('#newsGrid .news-card');
+            const categoryTitle = document.getElementById('categoryTitle');
+            const resultCount = document.getElementById('resultCount');
+            const noResults = document.getElementById('noResults');
+            const newsGrid = document.getElementById('newsGrid');
+
+            let visible = 0;
+
+            cards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (selected === 'all' || category === selected) {
+                    card.style.display = 'block';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            // Update title dynamically
+            categoryTitle.textContent = selected === 'all' ? 'All News' : selected + ' News';
+
+            // Update count
+            resultCount.textContent = visible;
+
+            // Show/hide no results message
+            if (visible === 0) {
+                noResults.style.display = 'block';
+                newsGrid.style.display = 'none';
+            } else {
+                noResults.style.display = 'none';
+                newsGrid.style.display = 'grid';
+            }
+        }
+
+        // Make cards clickable to go to single.html
+        document.querySelectorAll('#newsGrid .news-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const storyId = this.getAttribute('data-id');
+                localStorage.setItem('clickedStory', storyId);
+                window.location.href = 'single.html';
+            });
+        });
+    </script>
+
+</body>
+</html>
