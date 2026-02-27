@@ -278,24 +278,48 @@ function trackStoryClick(storyId) {
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     if (!contactForm) return;
+
+    // Clear error on input for all fields
+    ['name', 'email', 'message'].forEach(function(id) {
+        const field = document.getElementById(id);
+        if (field) {
+            field.addEventListener('input', function() {
+                this.classList.remove('error');
+                const existingError = this.parentNode.querySelector('.error-message');
+                if (existingError) existingError.remove();
+            });
+        }
+    });
+
+    // Clear error on category change
+    const categoryField = document.getElementById('tipCategory');
+    if (categoryField) {
+        categoryField.addEventListener('change', function() {
+            this.classList.remove('error');
+            const existingError = this.parentNode.querySelector('.error-message');
+            if (existingError) existingError.remove();
+        });
+    }
+
+   
     
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Clear previous errors
         document.querySelectorAll('.error-message').forEach(el => el.remove());
         document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+        const existingSuccess = document.getElementById('successMessage');
+        if (existingSuccess) existingSuccess.style.display = 'none';
         
         let isValid = true;
         
-        // Validate name
         const name = document.getElementById('name');
         if (!name.value.trim()) {
             showError(name, 'Name is required');
             isValid = false;
         }
         
-        // Validate email
         const email = document.getElementById('email');
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!email.value.trim()) {
@@ -306,14 +330,12 @@ function initContactForm() {
             isValid = false;
         }
         
-        // Validate category
         const category = document.getElementById('tipCategory');
         if (!category.value) {
             showError(category, 'Please select a category');
             isValid = false;
         }
         
-        // Validate message
         const message = document.getElementById('message');
         if (!message.value.trim()) {
             showError(message, 'Message is required');
@@ -321,7 +343,6 @@ function initContactForm() {
         }
         
         if (isValid) {
-            // Save tip to localStorage
             const tip = {
                 id: Date.now(),
                 name: name.value.trim(),
@@ -335,19 +356,21 @@ function initContactForm() {
             tips.push(tip);
             localStorage.setItem('newsTips', JSON.stringify(tips));
             
-            // Show success message
-            alert('Thank you! Your tip has been sent successfully.');
-            contactForm.reset();
-            
-            // Simulate file upload
-            const fileInput = document.getElementById('attachment');
-            if (fileInput.files.length > 0) {
-                console.log('File selected:', fileInput.files[0].name);
+            let successMsg = document.getElementById('successMessage');
+            if (!successMsg) {
+                successMsg = document.createElement('div');
+                successMsg.id = 'successMessage';
+                successMsg.style.cssText = 'background:#d4edda; color:#155724; border:1px solid #c3e6cb; padding:1rem; border-radius:4px; margin-bottom:1rem; font-weight:500;';
+                contactForm.insertBefore(successMsg, contactForm.firstChild);
             }
+            successMsg.textContent = 'Thank you! Your tip has been sent successfully.';
+            successMsg.style.display = 'block';
+            setTimeout(() => { successMsg.style.display = 'none'; }, 5000);
+
+            contactForm.reset();
         }
     });
 }
-
 function showError(element, message) {
     element.classList.add('error');
     const error = document.createElement('span');
